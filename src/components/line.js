@@ -2,9 +2,9 @@ var jStat = require('jStat').jStat;
 
 function generate_distr_beta(alpha, beta) {
     var data = []
-    var total = 100
+    var total = 1000
     
-    for (var i = 0; i < total; i++){
+    for (var i = 0; i <= total; i++){
         data.push([i / total, jStat.beta.pdf( i / total, alpha, beta)])
     }
     return data
@@ -12,7 +12,7 @@ function generate_distr_beta(alpha, beta) {
 
 function generate_distr_normal(mean, std) {
     var data = []
-    var total = 100
+    var total = 500
     for (var i = -total; i <= total; i++){
         data.push([i / total, jStat.normal.pdf( i / total, mean, std)])
     }
