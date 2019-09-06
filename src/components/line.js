@@ -14,9 +14,8 @@ function generate_distr_normal(mean, std) {
     var data = []
     var total = 500
     for (var i = -total; i <= total; i++){
-        data.push([i / total, jStat.normal.pdf( i / total, mean, std)])
+        data.push([i / total, jStat.normal.pdf( i / total, mean, std + 0.0000001)])
     }
-    console.log(data)
     return data
 }
 
