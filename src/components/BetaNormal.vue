@@ -1,17 +1,13 @@
 <template>
-  <div id="app" >
-    <SideBar />
-    <router-view />
-  </div>
+  <Graph align="center"/>
 </template>
 
 <script>
-
-import SideBar from './components/SideBar.vue'
+import Graph from './Graph.vue'
 
 export default {
   components: {
-    SideBar
+    Graph
   }
 }
 </script>
