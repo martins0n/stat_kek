@@ -1,6 +1,7 @@
 <template>
   <div class="chart-wrapper">
-    <h2> Beta distribution vs Normal distribution</h2>
+    <Post 
+    v-bind:post="{title: 'Beta distribution vs Normal distribution', url: 'stephens999.github.io/fiveMinuteStats/beta.html'}" align="center"/>
     <input v-model="success" placeholder="success">
     <input v-model="trials" placeholder="trials">
     <p>Success: {{ success }}</p>
@@ -10,7 +11,7 @@
 </template>
 <script>
 import Graph from './Graph.vue'
-
+import Post from './post'
 
 export default {
     computed: {
@@ -32,7 +33,7 @@ export default {
         }
     },
     components: {
-        Graph
+        Graph, Post
     }
 }
 </script>
