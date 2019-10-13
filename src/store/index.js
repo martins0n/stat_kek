@@ -7,8 +7,8 @@ Vue.use(Vuex)
 import betanormalstore from './modules/BetaNormalStore'
 
 const store = new Vuex.Store({
-  modules: {
-    betanormalstore
+    modules: {
+      betanormalstore
   }
 })
 

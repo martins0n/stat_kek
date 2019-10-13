@@ -18,22 +18,22 @@ import BetaNormal from './components/BetaNormal';
 import HelloWorld from './components/HelloWorld';
 
 const router = new VueRouter({
-  routes: [
-    {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },
-    {
-      path: '/beta_vs_normal',
-      name: 'BetaNormal',
-      component: BetaNormal
-    }
-  ]
+    routes: [
+        {
+            path: '/',
+            name: 'HelloWorld',
+            component: HelloWorld
+        },
+        {
+            path: '/beta_vs_normal',
+            name: 'BetaNormal',
+            component: BetaNormal
+        }
+    ]
 })
 
 new Vue({
-  store,
-  router: router,
-  render: h => h(App),
+    store,
+    router: router,
+    render: h => h(App),
 }).$mount('#app')

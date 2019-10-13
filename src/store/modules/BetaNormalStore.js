@@ -6,12 +6,12 @@ const state = {
 
 
 const getters = {
-   success: state => {
-       return state.success
-   },
-   trials: state => {
-    return state.trials
-}
+    success: state => {
+        return state.success
+    },
+    trials: state => {
+        return state.trials
+    }
 }
   
   // actions
@@ -22,14 +22,14 @@ const actions = {
   // mutations
 const mutations = {
     updateState (state, success, trials){
-      state.success = success
-      state.trials = trials
+        state.success = success
+        state.trials = trials
     },
     success (state, success){
-      state.success = success
+        state.success = success
     },
     trials (state, trials){
-      state.trials = trials
+        state.trials = trials
     }
 }
   
