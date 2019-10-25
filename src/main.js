@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueSidebarMenu from 'vue-sidebar-menu'
 import VueRouter from 'vue-router'
+import VueKonva from 'vue-konva'
 import store from './store/index'
 import 'vue-sidebar-menu/dist/vue-sidebar-menu.css'
 import '@fortawesome/fontawesome-free/css/all.css'
@@ -12,10 +13,12 @@ Vue.config.productionTip = false
 
 Vue.use(VueSidebarMenu)
 Vue.use(VueRouter)
+Vue.use(VueKonva)
 
 
 import BetaNormal from './components/BetaNormal';
 import HelloWorld from './components/HelloWorld';
+import LineDraw from './components/line_draw';
 
 const router = new VueRouter({
     routes: [
@@ -28,6 +31,11 @@ const router = new VueRouter({
             path: '/beta_vs_normal',
             name: 'BetaNormal',
             component: BetaNormal
+        },
+        {
+            path: '/line_draw',
+            name: 'LineDraw',
+            component: LineDraw
         }
     ]
 })
