@@ -1,10 +1,7 @@
 <template>
   <v-stage :config="configKonva" align="center">
     <v-layer>
-      <v-image 
-        @dragstart="handleDragStart"
-        @dragend="handleDragEnd"
-        :config="configImage"></v-image>,
+      <v-image :config="configImage"></v-image>
     </v-layer>
   </v-stage>
 </template>
