@@ -27,7 +27,7 @@ export default {
 
     created() {
         const image = new window.Image();
-        image.src = "./troll-face-png-19697.png";
+        image.src = "/stat_kek/troll-face-png-19697.png";
         image.onload = () => {
         // set image only when it is loaded
         this.configImage.image = image;
