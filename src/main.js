@@ -18,7 +18,7 @@ Vue.use(VueKonva)
 
 import BetaNormal from './components/BetaNormal';
 import HelloWorld from './components/HelloWorld';
-import LineDraw from './components/line_draw';
+import LineDraw from './components/LineDraw';
 
 const router = new VueRouter({
     routes: [
