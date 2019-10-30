@@ -2,18 +2,31 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
-jobs:
-  build-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout
-      uses: actions/checkout@master
+    - master
 
-    - name: Build and Deploy
-      uses: JamesIves/github-pages-deploy-action@master
+jobs:
+  build-deploy:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@master
+
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '10.x'
+
+    - name: install
+      run: npm install
+
+    - name: test
+      run: npm test
+
+    - name: generate
+      run: npm run generate
+
+    - name: deploy
+      uses: peaceiris/actions-gh-pages@v2.5.0
       env:
-        ACCESS_TOKEN: ${{ secrets.GHH_PAGES }}
-        BRANCH: gh-pages
-        FOLDER: dist
-        BUILD_SCRIPT: npm install && npm run-script build
+        PERSONAL_TOKEN: ${{ secrets.GHH_PAGES }}
+        PUBLISH_BRANCH: gh-pages
+        PUBLISH_DIR: ./dist
