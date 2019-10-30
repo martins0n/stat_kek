@@ -23,6 +23,11 @@
                         href: '/line_draw',
                         title: 'Line Draw',
                         icon: 'fas fa-angle-right'
+                    },
+                    {
+                        href: '/beta_vs_normal',
+                        title: 'Beta vs Normal',
+                        icon: 'fas fa-angle-right'
                     }
                 ],
                 collapsed: true
