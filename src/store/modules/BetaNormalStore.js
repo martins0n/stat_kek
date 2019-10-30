@@ -14,12 +14,12 @@ const getters = {
     }
 }
   
-  // actions
+
 const actions = {
   
 }
   
-  // mutations
+
 const mutations = {
     updateState (state, success, trials){
         state.success = success
