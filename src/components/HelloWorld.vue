@@ -1,5 +1,5 @@
 <template>
     <div align="center">
-        <h2> Hello, Git! </h2>
+        <h2> Hello, GitHub! </h2>
     </div>
 </template>
