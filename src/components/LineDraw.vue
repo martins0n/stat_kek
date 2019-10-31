@@ -1,10 +1,16 @@
 <template>
   <div>
-    <button v-on:click="counter += 1">Add 1</button>
+    <button v-on:click="AddLine">Add 1</button>
         <v-stage :config="configKonva" align="center" ref="stageFirst">
             <v-layer>
-                <Lines infoStage="stageFirst"/>
                 <ImageComp/>
+                <Lines infoStage="stageFirst"/>
+            </v-layer>
+        </v-stage>
+        <v-stage :config="configKonva" align="center" ref="stageSecond">
+            <v-layer>
+                <ImageComp/>
+                <Lines infoStage="stageSecond"/>
             </v-layer>
         </v-stage>
   </div>
@@ -25,10 +31,20 @@ export default {
             }
         },
     },
+
+    methods:{
+        AddLine: function(event){
+            this.$store.commit(
+                'addLine', 
+                event,
+                { module: 'linestore'}
+            )
+        }
+    },
     components: {
         ImageComp,
         Lines,
     }
-};
+}
 
 </script>

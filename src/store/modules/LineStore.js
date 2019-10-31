@@ -19,9 +19,19 @@ const actions = {
   
 
 const mutations = {
-   updateStateLines (state, value){
+    updateStateLines (state, value){
        console.log(value)
         state.lines[value.idx][value.infoStage][value.pos] = value.point
+    },
+    addLine (state, value){
+        state.lines.push({ 
+            stageFirst: { 
+                s: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)], 
+                t: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]}, 
+            stageSecond: { 
+                s: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)], 
+                t: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]}
+        })
     }
 }
   
