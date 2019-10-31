@@ -4,8 +4,8 @@
         <v-circle  :config="{
                         pos: 'source',
                         index: index,
-                        x: linePos.line_1.s[0],
-                        y: linePos.line_1.s[1],
+                        x: linePos.s[0],
+                        y: linePos.s[1],
                         radius: 5,
                         fill: 'red',
                         draggable: true,
@@ -13,8 +13,8 @@
         <v-circle    :config="{
                         pos: 'target',
                         index: index,
-                        x: linePos.line_1.t[0],
-                        y: linePos.line_1.t[1],
+                        x: linePos.t[0],
+                        y: linePos.t[1],
                         radius: 5,
                         fill: 'green',
                         draggable: true,
@@ -26,7 +26,8 @@
 export default {
     props: {
         linePos: Object,
-        index: Number
+        index: Number,
+        infoStage: String
     },
 
     data: function() {
@@ -40,9 +41,8 @@ export default {
     
     methods:{
         EmitEvent: function (event){
-            console.log(event)
+            console.log(this.infoStage)
             if(event.target.attrs.pos == "source"){
-
                // lines = this.$store.state.linestore.lines[idx]
                 this.konvaLine.points[0] = event.target.x();
                 this.konvaLine.points[1] = event.target.y();

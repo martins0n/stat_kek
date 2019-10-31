@@ -1,9 +1,9 @@
 <template>
   <div>
     <button v-on:click="counter += 1">Add 1</button>
-        <v-stage :config="configKonva" align="center" ref="stage">
+        <v-stage :config="configKonva" align="center" ref="stageFirst">
             <v-layer>
-                <Lines/>
+                <Lines infoStage="stageFirst"/>
                 <ImageComp/>
             </v-layer>
         </v-stage>
