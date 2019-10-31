@@ -50,7 +50,7 @@ export default {
                 this.konvaLine.points[2] = event.target.x();
                 this.konvaLine.points[3] = event.target.y();
             }
-            this.$emit('mouse', event);
+            
         },
         Colorify: function(){
             this.konvaLine.stroke = 'grey'

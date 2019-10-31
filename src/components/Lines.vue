@@ -10,25 +10,22 @@
 import CustomArrow from "./CustomArrow"
 
 export default {
-    props: ["mousePos"],
-    data (){
-        return {x: null, y: null}
-    },
-    computed: {
+    
+    computed:{
         lines:{
             get(){
-               return this.$store.state.linestore.lines
-        }
-    },
+                return this.$store.state.linestore.lines
+            }
+        },
   /*  methods: {
-        handleMouseMove : function(event) {
+        handleMouseMUnknown custom element: <CustomArrow> - did you register the component correctly? For recursive components, make sure to provide the "name" optionove : function(event) {
             this.x = event.target.x();
             this.y = event.target.y();
         }
     }, */
+    },
     components: {
         CustomArrow
     }
-}
 }
 </script>
