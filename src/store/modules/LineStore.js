@@ -19,9 +19,10 @@ const actions = {
   
 
 const mutations = {
-   /* updateState (state, idx, point){
-        state.lines[idx] = point
-    },*/
+   updateStateLines (state, value){
+       console.log(value)
+        state.lines[value.idx][value.infoStage][value.pos] = value.point
+    }
 }
   
 export default {

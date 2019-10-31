@@ -1,8 +1,11 @@
 <template>
     <div>
-        <v-line :config="konvaLine"/>
+        <v-line :config="{
+                points: [linePos.s[0], linePos.s[1], linePos.t[0], linePos.t[1]],
+                stroke: stroke,
+            }"/>
         <v-circle  :config="{
-                        pos: 'source',
+                        pos: 's',
                         index: index,
                         x: linePos.s[0],
                         y: linePos.s[1],
@@ -11,7 +14,7 @@
                         draggable: true,
                     }" @dragstart="HandleDrag" @dragend="HandleStop"/>
         <v-circle    :config="{
-                        pos: 'target',
+                        pos: 't',
                         index: index,
                         x: linePos.t[0],
                         y: linePos.t[1],
@@ -32,34 +35,27 @@ export default {
 
     data: function() {
         return {
-            konvaLine: {
-                points: [40,40,100,100],
-                stroke: null,
-            }
+            stroke: 'grey'
         }
     },
     
     methods:{
         EmitEvent: function (event){
-            console.log(this.infoStage)
-            if(event.target.attrs.pos == "source"){
-               // lines = this.$store.state.linestore.lines[idx]
-                this.konvaLine.points[0] = event.target.x();
-                this.konvaLine.points[1] = event.target.y();
-            }else{
-                this.konvaLine.points[2] = event.target.x();
-                this.konvaLine.points[3] = event.target.y();
-            }
-            
+            var attrs = event.target.attrs
+            var value = {idx: attrs.index, infoStage: this.infoStage, pos: attrs.pos, point: [attrs.x, attrs.y]}
+            this.$store.commit(
+                'updateStateLines', 
+                value,
+                { module: 'linestore'}
+            )
         },
         Colorify: function(){
-            this.konvaLine.stroke = 'grey'
+            this.stroke = 'grey'
         },
         Trans: function(){
-            this.konvaLine.stroke = null
+            this.stroke = null
         },
         HandleDrag: function(event){
-            this.EmitEvent(event)
             this.Trans()
         },
         HandleStop: function(event){
