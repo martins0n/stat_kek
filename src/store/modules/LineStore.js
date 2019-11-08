@@ -21,9 +21,9 @@ const actions = {
 const mutations = {
     updateStateLines (state, value){
        console.log(value)
-        state.lines[value.idx][value.infoStage][value.pos] = value.point
+        state.lines[value.index][value.infoStage][value.pos] = value.point
     },
-    addLine (state, value){
+    addRandomLine (state, value){
         state.lines.push({ 
             stageFirst: { 
                 s: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)], 
@@ -32,6 +32,9 @@ const mutations = {
                 s: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)], 
                 t: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]}
         })
+    },
+    deleteLine (state, value){
+        state.lines.splice(value, 1)
     }
 }
   
