@@ -3,7 +3,7 @@
 <div>
     <div class="column">
         <button v-on:click="AddLine">Add line</button>
-        <v-stage :config="configKonva" ref="stageFirst">
+        <v-stage :config="configKonva1" ref="stageFirst">
         <v-layer>
             <v-image :config="configImageFirst"/>
             <Lines infoStage="stageFirst"/>
@@ -17,6 +17,24 @@
             doNotResize="gif"
             :autoRotate="true"
             @input="AddImage1"
+            :preview="false">
+        </image-uploader>
+    </div>
+    <div class="column">
+        <v-stage :config="configKonva2" ref="stageSecond">
+        <v-layer>
+            <v-image :config="configImageSecond"/>
+            <Lines infoStage="stageSecond"/>
+        </v-layer>
+        </v-stage>       
+    </div>
+    <div class="column">
+        <image-uploader
+            :className="['fileinput', { 'fileinput--loaded': hasImage }]"
+            capture="environment"
+            doNotResize="gif"
+            :autoRotate="true"
+            @input="AddImage2"
             :preview="false">
         </image-uploader>
     </div>
@@ -43,14 +61,23 @@ export default {
         return {
             imageFirst: null,
             widthFirst: 400,
-            heightFirst: 400
+            heightFirst: 400,
+            imageSecond: null,
+            widthSecond: 400,
+            heightSecond: 400,
         }
      },
     computed:{
-        configKonva(){
+        configKonva1(){
             return {
                 width: this.widthFirst,
                 height: this.heightFirst
+            }
+        },
+        configKonva2(){
+            return {
+                width: this.widthSecond,
+                height: this.heightSecond
             }
         },
         configImageFirst(){
@@ -61,11 +88,19 @@ export default {
                 height: this.heightFirst,
             }
         },
+        configImageSecond(){
+            return {
+                image: this.imageSecond,
+                hasImage: true,
+                width: this.widthSecond,
+                height: this.heightSecond,
+            }
+        },
         GetLines() {
             var lines = this.$store.state.linestore.lines
             lines = lines.map(function(element){
                 return {
-                    t_line: {
+                    s_line: {
                         p: {
                             x: element.stageFirst.p[0],
                             y: element.stageFirst.p[1]
@@ -75,7 +110,7 @@ export default {
                             y: element.stageFirst.q[1]
                         }
                     },
-                    s_line: {
+                    t_line: {
                         p: {
                             x: element.stageSecond.p[0],
                             y: element.stageSecond.p[1]
@@ -107,11 +142,20 @@ export default {
                 this.imageFirst = image;
             };
         },
+        AddImage2: function(output) {
+            const image = new window.Image();
+            image.src = output
+            image.onload = () =>{
+                this.heightSecond = image.height;
+                this.widthSecond = image.width;
+                this.imageSecond = image;
+            };
+        },
         DownloadLines: function(){
             var lines = this.$store.state.linestore.lines
             lines = lines.map(function(element){
                 return {
-                    t_line: {
+                    s_line: {
                         p: {
                             x: element.stageFirst.p[0],
                             y: element.stageFirst.p[1]
@@ -121,7 +165,7 @@ export default {
                             y: element.stageFirst.q[1]
                         }
                     },
-                    s_line: {
+                    t_line: {
                         p: {
                             x: element.stageSecond.p[0],
                             y: element.stageSecond.p[1]
