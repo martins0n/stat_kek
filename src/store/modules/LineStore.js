@@ -1,8 +1,8 @@
 
 const state = {
     lines: [
-        { stageFirst: { s: [50, 50], t: [100, 100]}, stageSecond: { s: [200, 200], t: [100, 100]} }, 
-        { stageFirst: { s: [29, 29], t: [300, 300]}, stageSecond: { s: [200, 200], t: [400, 400]} }]
+        { stageFirst: { p: [50, 50], q: [100, 100]}, stageSecond: { p: [200, 200], q: [100, 100]} }, 
+        { stageFirst: { p: [29, 29], q: [300, 300]}, stageSecond: { p: [200, 200], q: [400, 400]} }]
 }
 
 
@@ -24,13 +24,14 @@ const mutations = {
         state.lines[value.index][value.infoStage][value.pos] = value.point
     },
     addRandomLine (state, value){
-        state.lines.push({ 
+        var first = Math.floor(Math.random() * 100)
+        state.lines.push({
             stageFirst: { 
-                s: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)], 
-                t: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]}, 
+                p: [first , first + 100], 
+                q: [first + 100, first + 200]}, 
             stageSecond: { 
-                s: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)], 
-                t: [Math.floor(Math.random() * 100), Math.floor(Math.random() * 100)]}
+                p: [first, first + 100], 
+                q: [first + 100, first + 200]}
         })
     },
     deleteLine (state, value){

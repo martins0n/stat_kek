@@ -1,39 +1,39 @@
 <template>
     <div>
         <v-line :config="{
-                points: [linePos.s[0], linePos.s[1], linePos.t[0], linePos.t[1]],
+                points: [linePos.p[0], linePos.p[1], linePos.q[0], linePos.q[1]],
                 stroke: stroke,
             }"/>
         <v-circle  :config="{
-                        pos: 's',
+                        pos: 'p',
                         index: index,
-                        x: linePos.s[0],
-                        y: linePos.s[1],
+                        x: linePos.p[0],
+                        y: linePos.p[1],
                         radius: 5,
                         fill: 'red',
                         draggable: true,
                     }" @dragstart="HandleDrag" @dragend="HandleStop"/>
         <v-circle    :config="{
-                        pos: 't',
+                        pos: 'q',
                         index: index,
-                        x: linePos.t[0],
-                        y: linePos.t[1],
+                        x: linePos.q[0],
+                        y: linePos.q[1],
                         radius: 5,
                         fill: 'green',
                         draggable: true,
                     }" @dragstart="HandleDrag"  @dragend="HandleStop"/>
         <v-text :config="{
                         index: index,
-                        x: linePos.t[0] + 10,
-                        y: linePos.t[1],
+                        x: linePos.q[0],
+                        y: linePos.q[1],
                         text: index + 1,
                         fill: text_color,
                     }" />
         <v-circle    :config="{
-                        pos: 't',
+                        pos: 'q',
                         index: index,
-                        x: (linePos.t[0] + linePos.s[0]) / 2,
-                        y: (linePos.t[1] + linePos.s[1]) / 2,
+                        x: (linePos.q[0] + linePos.p[0]) / 2,
+                        y: (linePos.q[1] + linePos.p[1]) / 2,
                         offset: 100,
                         //offsetY: 5,
                         radius: 6,
